@@ -1,0 +1,144 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "tweets",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/data/yqt/raster-join-master/RasterJoin/RasterJoin",
+            "args": ["--nIter","1","--joinType","raster","--backendIndexName","/data/yqt/DATA/socialnetwork/tweets-backend","--polygonList","/data/yqt/DATA/polys/nyc_polys.txt","--polygonDataset","neigh","--locAttrib","1","--nAttrib","1","--startTime","1230768000","--endTime","1272808000","--inmem","--outputTime","./a","--accuracy","2"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ]
+        },
+        {
+            "name": "fake",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/data/yqt/raster-join-master/RasterJoin/RasterJoin",
+            "args": ["--nIter","1","--joinType","raster","--backendIndexName","/data/yqt/DATA/TEMP/fake","--polygonList","/data/yqt/DATA/polys/nyc_polys.txt","--polygonDataset","neigh","--locAttrib","1","--nAttrib","1","--startTime","1230768000","--endTime","1272808000","--inmem","--outputTime","./a","--accuracy","2"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "twitter",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/data/yqt/raster-join-master/RasterJoin/RasterJoin",
+            "args": ["--nIter","1","--joinType","raster","--backendIndexName","/data/yqt/DATA/socialnetwork/twitter","--polygonList","/data/yqt/DATA/polys/nyc_polys.txt","--polygonDataset","neigh","--locAttrib","1","--nAttrib","1","--startTime","1230768000","--endTime","1272808000","--inmem","--outputTime","./a","--accuracy","2"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ]
+        },
+        {
+            "name": "twitter_world",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/data/yqt/raster-join-master/RasterJoin/RasterJoin",
+            "args": ["--nIter","1","--joinType","raster","--backendIndexName","/data/yqt/DATA/socialnetwork/twitter_world","--polygonList","/data/yqt/DATA/polys/nyc_polys.txt","--polygonDataset","neigh","--locAttrib","1","--nAttrib","1","--startTime","1230768000","--endTime","1272808000","--inmem","--outputTime","./a","--accuracy","20"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ]
+        },
+        {
+            "name": "twitter_test",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/data/yqt/raster-join-master/RasterJoin/RasterJoin",
+            "args": ["--nIter","1","--joinType","raster","--backendIndexName","/data/yqt/DATA/TEST/twitter","--polygonList","/data/yqt/DATA/polys/nyc_polys.txt","--polygonDataset","neigh","--locAttrib","1","--nAttrib","1","--startTime","1230768000","--endTime","1272808000","--inmem","--outputTime","./a","--accuracy","600"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "gowalla_test",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/data/yqt/raster-join-master/RasterJoin/RasterJoin",
+            "args": ["--nIter","1","--joinType","raster","--backendIndexName","/data/yqt/DATA/TEST/gowalla","--polygonList","/data/yqt/DATA/polys/nyc_polys.txt","--polygonDataset","neigh","--locAttrib","1","--nAttrib","1","--startTime","1230768000","--endTime","1272808000","--inmem","--outputTime","./a","--accuracy","20000"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "gowalla",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/data/yqt/raster-join-master/RasterJoin/RasterJoin",
+            "args": ["--nIter","1","--joinType","raster","--backendIndexName","/data/yqt/DATA/socialnetwork/gowalla","--polygonList","/data/yqt/DATA/polys/nyc_polys.txt","--polygonDataset","neigh","--locAttrib","1","--nAttrib","1","--startTime","1230768000","--endTime","1272808000","--inmem","--outputTime","./a","--accuracy","10"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
+
+// --nIter 10 --joinType raster --backendIndexName [path to data folder]/taxi/taxi_full_index --polygonList [path to data folder]/polys/nyc_polys.txt --polygonDataset neigh --locAttrib 1 --nAttrib 2 --startTime 1230768000 --endTime 1272808000 --inmem
+// --outputTime [path to output folder]/scalability/taxi-mem-attrib.txt

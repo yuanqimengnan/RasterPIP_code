@@ -1,0 +1,62 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/c++,cmake
+# Edit at https://www.toptal.com/developers/gitignore?templates=c++,cmake
+
+**/Enclave_t.*
+**/Enclave_u.*
+### C++ ###
+# Prerequisites
+*.d
+map.json
+logfile
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.core
+*.so.*
+### CMake ###
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+build
+cmake-build-debug
+opengauss_include
+### CMake Patch ###
+# External projects
+*-prefix/
+
+# End of https://www.toptal.com/developers/gitignore/api/c++,cmake
