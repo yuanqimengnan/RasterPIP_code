@@ -42,12 +42,13 @@ int64_t gpuMemInMB;
 //output
 QVector<int> agg, bounds;
 
-//liuziang:for experiment output
+//for experiment output
 float_t experiment_time[10] = {0,0,0,0,0,0,0,0,0,0};
 string title = "Query Index,triangle,pass polygons,pass points,render Polygons,render Points,get result,time,Coarse Query points number,result size";
-//liuziang: choose dataset;see forexperiment.h and UsefulFuncs.cpp
+//choose dataset;see forexperiment.h and UsefulFuncs.cpp
 int dataset = 1;
-int single_pass_size = 31;
+// set batch size
+int single_pass_size = 32;
 int batch_size = single_pass_size * 4;
 
 void ensureOpenGLFormat()
@@ -437,8 +438,7 @@ int main(int argc, char *argv[])
     bool output = true;
     if(output) {
 
-        string path = "/home/lza/DATA/EXPERIMENT/lza/gpu_yellow01_groupby_largepolygons_5.csv";
-       // string path = "/home/lza/DATA/EXPERIMENT/lza/gpu_twitter_small_polygons_1.csv";
+        string path = "experiment.csv";
         fstream fs;
         fs.open(path, ios::app);
         fs.setf(ios::fixed);
