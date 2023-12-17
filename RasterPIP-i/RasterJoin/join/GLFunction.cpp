@@ -192,13 +192,6 @@ void GLFunction::setupPolygons() {
 
 //    // loading polygon into memory
     psize = verts.size() * sizeof(float);
-//    this->polyBuffer->resize(GL_DYNAMIC_DRAW,psize*3/2);
-
-//    this->polyBuffer->setData(GL_DYNAMIC_DRAW,verts.data(),psize,0);
-//    this->polyBuffer->setData(GL_DYNAMIC_DRAW,ids.data(),psize / 2,psize);//这是传id值吧
-//    //liuziang:for experiment output
-//    qDebug()<<"polygon loading"<<std::round(timer.nsecsElapsed() / 10000.0f) / 100.0f<<"ms";
-//    experiment_time[2] += timer.nsecsElapsed();
 
     memLeft -= memRequired;
 #ifdef PROFILE_GL
@@ -206,12 +199,6 @@ void GLFunction::setupPolygons() {
     polyMemTime.last() += timer.elapsed();
 #endif
 }
-/**
-void GLFunction::clearFrame() {//自己写的一个清空的函数，现在用不上了
-    // uint32_t nopolys = data->getPolyHandler()->getNoPolys();
-    texBuf.create(128 * 3 * sizeof(GLint), GL_R32I, result.data());
-    glFinish();
-}**/
 void GLFunction::setupPoints() {
 #ifdef PROFILE_GL
     QElapsedTimer timer;
@@ -250,55 +237,7 @@ void GLFunction::setupPoints() {
     ByteArray * binAttribResult = res->getAttribute(location_attribute);// ByteArray :vector<char>*
     result_size = binAttribResult->size() /(3*sizeof(float));
 
-//    string selectFile = "/home/lza/DATA/EXPERIMENT/Coarse_user_raster.txt";
-//    ofstream outfile;
-//    outfile.open(selectFile, ios::out);
-
-//    if (!outfile.is_open())
-//    {
-//        qDebug() << "oh no";
-//    }
-   
-
-//    int id = 0;
-//    float lat,lon;
-//    char* i1p, *f1p, *f2p;
-//    char * begin1,*begin2;
-//    //   mybin = new vector<char>(8*lastBatch);
-//    ByteArray* mybin = new vector<char>(8*result_size); //typedef std::vector<char> ByteArray;
-//    myId = vector<int>(result_size);
-//    IDss = vector<int>(result_size);
- //为了存VAO
-//    for(int i =0; i < result_size; i++) {
-//        i1p = &(*binAttribResult)[i*12];
-//        f1p = &(*binAttribResult)[i*12 + 4];
-//        f2p = &(*binAttribResult)[i*12 + 8];
-//        id = *(int*)(i1p);
-//        lon = *(float*)(f1p);
-//        lat  = *(float*)(f2p);
-//       // IDs[i] = id;
-//        IDss[i] = id;
-//        begin1 = reinterpret_cast<char*>(&lon);
-//        begin2 = reinterpret_cast<char*>(&lat);
-//        memcpy(mybin->data() + i*8,  begin1, 4);
-//        memcpy(mybin->data() + i*8+4, begin2, 4);
-//    }
-
-//    inputData<<mybin;
-    // assert(cnt == mybin->size());
-    // sort(myId.begin(),myId.end());
-    // for (int i = 0; i < myId.size(); i++)
-    // {
-    //     outfile<<myId[i]<<endl;  
-    // }
-    // outfile.close();
-//    std::cout<<"Coarse Query points number is"<<result_size<<std::endl;
-    //liuziang:for experiment output
     experiment_time[8] = result_size;
-
-//    result = QVector<int>(result_size);
-//    result[0] = 0;
-
 
     record_size += 2;
 
