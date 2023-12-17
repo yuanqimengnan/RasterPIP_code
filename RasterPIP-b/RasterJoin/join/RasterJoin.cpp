@@ -236,7 +236,6 @@ void RasterJoin::performJoin()
     GLsizeiptr origMem = memLeft;
     this->setupPolygons();
     this->setupPoints();
-    // pbuffer->resize(GL_DYNAMIC_DRAW, this->handler->maxBufferSize);
 
     // setup rendering passes
     Bound bound = this->handler->dataHandler->getPolyHandler()->getBounds();
@@ -256,12 +255,10 @@ void RasterJoin::performJoin()
     std::cout<<"Coarse Query points number is"<<result_size<<std::endl;
 
     this->pbuffer->resize(GL_DYNAMIC_DRAW, (result_size * 2 * 4) + (result_size * 4));
- //   this->pbuffer->resize(GL_DYNAMIC_DRAW, (result_size * 2 * 4));
     QElapsedTimer t1;
     t1.start();
     this->pbuffer->setData1(GL_DYNAMIC_DRAW, binAttribResult->data(), result_size * 12, 0, false);
-   // this->pbuffer->setData1(GL_DYNAMIC_DRAW, IDss.data(), result_size * 4, result_size * 8, false);
-    //liuziang:for experiment output
+    //for experiment output
     experiment_time[3] += t1.nsecsElapsed();
     qDebug() << "pass points " << std::round(t1.nsecsElapsed() / 10000.0f) / 100.0f<< " milliseconds";
     int allNodes = 0;
@@ -269,20 +266,8 @@ void RasterJoin::performJoin()
     timer1.start();
     vector<int> TrueId;
     for (int i = 0; i < noPtPasses; i++)
-    { //渲染点的循环 noPtPasses不溢出就一直是1
-        // for (int x = 0; x < splitx; x++)
-        // { // 努力只渲染一次多边形
-        //     for (int y = 0; y < splity; y++)
-        //     {
-        //         QPointF lb = bound.leftBottom + QPointF(x * diff.x(), y * diff.y());
-        //         QPointF rt = lb + diff;
-        //         this->mvp = getMVP(lb, rt);
-        //         this->renderPolys();
-        //     }
-        // }
+    {
         GLsizeiptr offset = 0;
-    //    this->pbuffer->setData1(GL_DYNAMIC_DRAW, inputData[0]->data(), result_size * 8, 0, false);
-        // this->pbuffer->setData1(GL_DYNAMIC_DRAW, inputData[0]->data(), result_size*8, 0,flag);
         QElapsedTimer t3;
         qint64 t33 = 0;
         qint64 t44 = 0;
@@ -301,27 +286,23 @@ void RasterJoin::performJoin()
                 t44 += t3.nsecsElapsed();
             }
         }
-        //liuziang:for experiment output
         experiment_time[4] += t33;
         experiment_time[5] += t44;
         qDebug() << "render Polygons " << std::round(t33 / 10000.0f) / 100.0f << " milliseconds";
         qDebug() << "render Points " << std::round(t44 / 10000.0f) / 100.0f << " milliseconds";
-        // FBOObject::bindDefault();
         QElapsedTimer t4;
         t4.start();
         result = texBuf.getBuffer();
-        //liuziang:for experiment output
         experiment_time[6] += t4.nsecsElapsed();
         qDebug() << "get result" << std::round(t4.nsecsElapsed() / 10000.0f) / 100.0f<< " milliseconds";
         allNodes = result.size();
     }
-    //liuziang:for experiment output
+    
     experiment_time[9] = allNodes;
- //   qDebug() << "rendering took " << timer1.elapsed() << " milliseconds";
     qDebug() << "The result size is" << allNodes;
 
-
-//    string selectFile = "/home/lza/DATA/EXPERIMENT/lza/output/gpu_twitter_polygons_65536_10.csv.txt";
+// Output the result, if needed.
+//    string selectFile = "result.txt";
 //    ofstream outfile;
 //    outfile.open(selectFile, ios::out);
 
