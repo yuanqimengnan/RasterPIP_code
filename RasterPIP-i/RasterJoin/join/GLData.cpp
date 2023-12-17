@@ -59,13 +59,6 @@ void GLBuffer::setData1(GLenum usage, const GLvoid* data, GLsizeiptr dataSize, G
         glUnmapBuffer(this->target);
     } else {
         glBufferSubData(this->target, offset, dataSize, data);
-        /**
-         * target: 可以参考glBufferData中的描述，用来指定需要更新的缓冲区对象的类型
-           offset: 指定了更新数据相对于缓冲区对象中原始数据开始位置的偏移量，也就是说要从什么地方开始更新原来的数据（以字节为单位）
-           size：需要更新的数据量的大小
-           data：一个指向新数据源的指针，将新的数据源拷贝到缓冲区对象中完成更新
-         * 
-         */
     }
 }
 
@@ -163,24 +156,6 @@ void GLTextureBuffer::create(int size, GLenum format, void* data)
     glBufferData(GL_SHADER_STORAGE_BUFFER, size, data1.data(), GL_DYNAMIC_DRAW );
     glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 4, ssbo1);
 
-//    QVector<int> data1(size*4/sizeof (int));
-//    glGenBuffers(1, &ssbo2);
-//    glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo2);
-//    glBufferData(GL_SHADER_STORAGE_BUFFER, size*4, data1.data(), GL_DYNAMIC_DRAW );
-//    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 5, ssbo2);
-//    glGenBuffers(1, &ssbo3);
-//    glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo3);
-//    glBufferData(GL_SHADER_STORAGE_BUFFER, size, data, GL_DYNAMIC_DRAW );
-//    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 6, ssbo3);
-//    glGenBuffers(1, &ssbo4);
-//    glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo4);
-//    glBufferData(GL_SHADER_STORAGE_BUFFER, size, data, GL_DYNAMIC_DRAW );
-//    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 7, ssbo4);
-//    glGenBuffers(1, &ssbo5);
-//    glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo5);
-//    glBufferData(GL_SHADER_STORAGE_BUFFER, size, data, GL_DYNAMIC_DRAW );
-//    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 8, ssbo5);
-
     const GLuint zero = 0;
     glGenBuffers(1, &count);
     glBindBuffer(GL_ATOMIC_COUNTER_BUFFER, count);
@@ -240,21 +215,6 @@ QVector<int> GLTextureBuffer::getBuffer()
 
 
     glGetBufferSubData(GL_SHADER_STORAGE_BUFFER, 0, count*sizeof(int), data1.data());
-//    std::cout<<"get result:"<<timer1.elapsed()<<std::endl;;
-//    GLenum err = glGetError();
-//    if( err > 0 ){
-//        QString strError;
-//        strError.sprintf("%s", glewGetErrorString(err));
-//        qDebug() << "getBuffer error: " << strError;
-//        std::cout<< "getBuffer error: " << strError.toStdString();
-//    }
-//    QVector<int> zero(count);
-//    glBufferSubData(GL_SHADER_STORAGE_BUFFER, 0, count*sizeof(int), zero.data());
-//    QVector<int> zero1(size/sizeof(int));
-//    zero1.resize(size/sizeof(int));
-//    glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo1);
-//    glBufferSubData(GL_SHADER_STORAGE_BUFFER, 0, size, zero1.data());
-//    timer1.restart();
     count = 0;
     glBufferSubData(GL_ATOMIC_COUNTER_BUFFER, 0, sizeof(int), &count);
 //    std::cout<<"update count:"<<timer1.elapsed()<<std::endl;;
