@@ -434,8 +434,7 @@ int main(int argc, char *argv[])
     bool output = true;
     if(output) {
 
-        string path = "/home/lza/DATA/EXPERIMENT/lza/gpu_increasing_points_polygon_5_10.csv";
-       // string path = "/home/lza/DATA/EXPERIMENT/lza/gpu_twitter_small_polygons_1.csv";
+        string path = "result_of_experiment.csv";
         fstream fs;
         fs.open(path, ios::app);
         fs.setf(ios::fixed);
