@@ -10,7 +10,7 @@ Usage: RasterPIPi --nIter number_of_iterations --accuracy meters --joinType rast
 
 --accuracy: The pixel length in meters.
 
---joinType: Setting to "raster" for RasterPIP-b.
+--joinType: Setting to "raster" for RasterPIP-i.
 
 --backendIndexName: Prefix path to the backend index containing the points data.
 
@@ -18,13 +18,13 @@ Usage: RasterPIPi --nIter number_of_iterations --accuracy meters --joinType rast
 
 --polygonList: Path to the file containing the polygon data.
 
---polygonDataset: Give a name for the polygon dataset, setting to "neigh" for RasterPIP-b.
+--polygonDataset: Give a name for the polygon dataset, setting to "neigh" for RasterPIP-i.
 
---locAttrib: Denote which is the spatial (location) attribute of the record, setting to "1" for RasterPIP-b.
+--locAttrib: Denote which is the spatial (location) attribute of the record, setting to "1" for RasterPIP-i.
 
---nAttrib: Number of filtering constraints, setting to "1" for RasterPIP-b.
+--nAttrib: Number of filtering constraints, setting to "1" for RasterPIP-i.
 
---startTime and --endTime: Define a time range and retrieve the corresponding data from the backend. For RasterPIP-b, it is the same as RasterJoin. 
+--startTime and --endTime: Define a time range and retrieve the corresponding data from the backend. For RasterPIP-i, it is the same as RasterJoin. 
 
 --inmem: Execute algorithm in GPU memory.
 
@@ -32,4 +32,4 @@ Usage: RasterPIPi --nIter number_of_iterations --accuracy meters --joinType rast
 
 --experiments Path to file used to store the experiment data, such as execution time in milliseconds.
 
---selectFile Path to file used to store the points returned by RasterPIP-b.
+--selectFile Path to file used to store the points returned by RasterPIP-i.
