@@ -56,13 +56,6 @@ void GLBuffer::setData1(GLenum usage, const GLvoid* data, GLsizeiptr dataSize, G
         glUnmapBuffer(this->target);
     } else {
         glBufferSubData(this->target, offset, dataSize, data);
-        /**
-         * target: 可以参考glBufferData中的描述，用来指定需要更新的缓冲区对象的类型
-           offset: 指定了更新数据相对于缓冲区对象中原始数据开始位置的偏移量，也就是说要从什么地方开始更新原来的数据（以字节为单位）
-           size：需要更新的数据量的大小
-           data：一个指向新数据源的指针，将新的数据源拷贝到缓冲区对象中完成更新
-         * 
-         */
     }
 }
 
@@ -202,39 +195,6 @@ void GLTextureBuffer::setData(int size, GLenum format, void *data) {
 
 QVector<int> GLTextureBuffer::getBuffer()
 {
-
-
-//    glGetBufferSubData(GL_TEXTURE_BUFFER, 0, sizeof(int), &count);
-//    GLenum err = glGetError();
-//    QVector<int> data1(count);
-    //Try to clear!!! 
-    // glClearTexImage(texId, 0, GL_R, GL_INT, NULL);
-    //  glClearTexImage(this->textureID, 0, GL_RG, GL_FLOAT, NULL);
-    // glClearTexImage(bufId, 0, GL_RGBA, GL_FLOAT, NULL);
-//    int count1 = data[0];
-//    std::vector<char> emdata(size,0);
-//    // glClearBufferSubData(bufId,GL_R32I,0,size,GL_RED_INTEGER ,GL_RED_INTEGER,emdata.data());
-    
-//    glBufferSubData(GL_TEXTURE_BUFFER, 0, size, emdata.data());
-    // glDeleteTextures( 1, &texId); //delete previously created texture
-    // glGenTextures( 1, &texId );
-    // glBindTexture( GL_TEXTURE_BUFFER, texId );
-    // glTexBuffer( GL_TEXTURE_BUFFER, GL_R32I,  bufId );
-    // char arr[size];
-
-//    // by liuziang
-//    char *arr = new char[size];
-//    glGetBufferSubData(GL_TEXTURE_BUFFER, 0, size, arr);
-
-    // texBuf.create(128 * 3 * sizeof(GLint), GL_R32I, emdata.data());
-    
-    // glBufferSubData(bufId, 0, size, emdata.data());
-    // glClearColor();
-    //err = glGetError();
-    // GLint errorid= glGetError();
-    // glBindBuffer(GL_TEXTURE_BUFFER, 0);
-    // glGetBufferSubData(GL_TEXTURE_BUFFER, 0, size, data.data());
-
     int count;
     glGetBufferSubData(GL_ATOMIC_COUNTER_BUFFER, 0, sizeof(int), &count);
     QVector<int> data1(count);
@@ -247,15 +207,6 @@ QVector<int> GLTextureBuffer::getBuffer()
         qDebug() << "getBuffer error: " << strError;
         std::cout<< "getBuffer error: " << strError.toStdString();
     }
-//    std::vector<char> emdata(size,0);
-//    glBufferSubData(GL_TEXTURE_BUFFER, 0, size, emdata.data());
-//    err = glGetError();
-//    if( err > 0 ){
-//        QString strError;
-//        strError.sprintf("%s", glewGetErrorString(err));
-//        qDebug() << "getBuffer error: " << strError;
-//        std::cout<< "getBuffer error: " << strError.toStdString();
-//    }
     return data1;
 }
 
