@@ -61,17 +61,6 @@ void RasterJoin::updateBuffers()
     Bound bound = poly->getBounds();
     QPointF diff = bound.rightTop - bound.leftBottom;
 
-//    for (int i=0;i<batch_bound.size();i++) {
-//         batch_diff.setX((batch_bound[i].maxx-batch_bound[i].minx));
-//         batch_diff.setY((batch_bound[i].maxy-batch_bound[i].miny));
-//         actualResX = int(std::ceil(batch_diff.x() / cellSize));
-//         actualResY = int(std::ceil(batch_diff.y() / cellSize));
-//         splitx = std::ceil(double(actualResX) / maxRes);
-//         splity = std::ceil(double(actualResY) / maxRes);
-//         resx = std::ceil(double(actualResX) / splitx);
-//         resy = std::ceil(double(actualResY) / splity);
-//    }
-
     actualResX = int(std::ceil(diff.x() / cellSize));
     actualResY = int(std::ceil(diff.y() / cellSize));
 
@@ -80,11 +69,6 @@ void RasterJoin::updateBuffers()
 
     resx = std::ceil(double(actualResX) / splitx);
     resy = std::ceil(double(actualResY) / splity);
-
-//    qDebug() << "Max. Res:" << maxRes;
-//    qDebug() << "Actual Resolution" << actualResX << actualResY;
-//    qDebug() << "splitting each axis by" << splitx << splitx;
-//    qDebug() << "Rendering Resolution" << resx << resy;
 
     GLFunction::size = QSize(resx, resy);
     if (this->polyFbo.isNull() || this->polyFbo->size() != GLFunction::size)
@@ -297,10 +281,6 @@ void RasterJoin::performJoin()
     //each thread has its own array to store results
     std::vector<std::vector<std::vector<int>>> polygonArray_thread(mts, std::vector<std::vector<int>>(this->polySize));
 
-//    qint64 test1 = 0;
-//    qint64 test2 = 0;
-//    qint64 test3 = 0;
-
     GLvoid* mappedData =  glMapBufferRange(GL_SHADER_STORAGE_BUFFER,0,result_size*5*sizeof(int),GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT | GL_MAP_READ_BIT);
     GLenum error = glGetError();
 
@@ -404,17 +384,8 @@ void RasterJoin::performJoin()
         }
     }
     experiment_time[6] += t4.nsecsElapsed();
-//    test3 += t4.elapsed();
-//    qDebug() << "-------------------------------------";
-//    qDebug() << "get buffer" << test1;
-//    qDebug() << "id map" << test2;
-//    qDebug() << "format groupby" << test3;
-//    qDebug() << "-------------------------------------";
-    //liuziang:for experiment output
     experiment_time[9] = allNodestest;
-//    for (int i=0;i<int(this->polySize);i++) {
-//        qDebug() << "Polygon" << i << ":" << polygonArray[i].size();
-//    }
+
     qDebug() << "pass polygons " << std::round(experiment_time[2] / 10000.0f) / 100.0f << " milliseconds";
     qDebug() << "render Polygons " << std::round(experiment_time[4] / 10000.0f) / 100.0f << " milliseconds";
     qDebug() << "render Points " << std::round(experiment_time[5] / 10000.0f) / 100.0f << " milliseconds";
@@ -423,8 +394,8 @@ void RasterJoin::performJoin()
     qDebug() << "group result size is" << allNodestest;
     qDebug() << "------------------------------------------";
 
-//    output the result into file
-//    string selectFile = "/home/lza/DATA/EXPERIMENT/lza/output/gpu_twitter_groupby_largepolygons_1.csv.txt";
+//    Output the result into file, if needed.
+//    string selectFile = "result.txt";
 //    ofstream outfile;
 //    outfile.open(selectFile, ios::out);
 
